@@ -1,0 +1,152 @@
+Potential deadlock: frozen threads found
+
+It seems that the following threads have not changed their stack for more than 10 seconds.
+These threads are possibly (but not necessarily!) in a deadlock or hung.
+
++----------------------------------------------------------------------------------------------------------------------------+
+|                                                            Name                                                            |
++----------------------------------------------------------------------------------------------------------------------------+
+|  +---webStructureAnalysis_pool-1-thread-247 Frozen for at least 10s <Ignore a false positive>                              |
+|  | |                                                                                                                       |
+|  | +---jdk.internal.misc.Unsafe.park(boolean, long) Unsafe.java (native)                                                   |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.LockSupport.park(Object) LockSupport.java:194                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() AbstractQueuedSynchronizer.java:2081  |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.LinkedBlockingQueue.take() LinkedBlockingQueue.java:433                                        |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.WorkflowProcessor.take() WorkflowProcessor.java:126                                      |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.AbstractBlockingThread.run() AbstractBlockingThread.java:73                              |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.Executors$RunnableAdapter.call() Executors.java:515                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.FutureTask.run() FutureTask.java:264                                                           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker) ThreadPoolExecutor.java:1128           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor$Worker.run() ThreadPoolExecutor.java:628                                    |
+|  | |                                                                                                                       |
+|  | +---java.lang.Thread.run() Thread.java:829                                                                              |
+|  |                                                                                                                         |
+|  +---webStructureAnalysis_pool-1-thread-248 Frozen for at least 10s <Ignore a false positive>                              |
+|  | |                                                                                                                       |
+|  | +---jdk.internal.misc.Unsafe.park(boolean, long) Unsafe.java (native)                                                   |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.LockSupport.park(Object) LockSupport.java:194                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() AbstractQueuedSynchronizer.java:2081  |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.LinkedBlockingQueue.take() LinkedBlockingQueue.java:433                                        |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.WorkflowProcessor.take() WorkflowProcessor.java:126                                      |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.AbstractBlockingThread.run() AbstractBlockingThread.java:73                              |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.Executors$RunnableAdapter.call() Executors.java:515                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.FutureTask.run() FutureTask.java:264                                                           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker) ThreadPoolExecutor.java:1128           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor$Worker.run() ThreadPoolExecutor.java:628                                    |
+|  | |                                                                                                                       |
+|  | +---java.lang.Thread.run() Thread.java:829                                                                              |
+|  |                                                                                                                         |
+|  +---webStructureAnalysis_pool-1-thread-251 Frozen for at least 10s <Ignore a false positive>                              |
+|  | |                                                                                                                       |
+|  | +---jdk.internal.misc.Unsafe.park(boolean, long) Unsafe.java (native)                                                   |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.LockSupport.park(Object) LockSupport.java:194                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() AbstractQueuedSynchronizer.java:2081  |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.LinkedBlockingQueue.take() LinkedBlockingQueue.java:433                                        |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.WorkflowProcessor.take() WorkflowProcessor.java:126                                      |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.AbstractBlockingThread.run() AbstractBlockingThread.java:73                              |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.Executors$RunnableAdapter.call() Executors.java:515                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.FutureTask.run() FutureTask.java:264                                                           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker) ThreadPoolExecutor.java:1128           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor$Worker.run() ThreadPoolExecutor.java:628                                    |
+|  | |                                                                                                                       |
+|  | +---java.lang.Thread.run() Thread.java:829                                                                              |
+|  |                                                                                                                         |
+|  +---webStructureAnalysis_pool-1-thread-253 Frozen for at least 10s <Ignore a false positive>                              |
+|  | |                                                                                                                       |
+|  | +---jdk.internal.misc.Unsafe.park(boolean, long) Unsafe.java (native)                                                   |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.LockSupport.park(Object) LockSupport.java:194                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() AbstractQueuedSynchronizer.java:2081  |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.LinkedBlockingQueue.take() LinkedBlockingQueue.java:433                                        |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.WorkflowProcessor.take() WorkflowProcessor.java:126                                      |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.AbstractBlockingThread.run() AbstractBlockingThread.java:73                              |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.Executors$RunnableAdapter.call() Executors.java:515                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.FutureTask.run() FutureTask.java:264                                                           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker) ThreadPoolExecutor.java:1128           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor$Worker.run() ThreadPoolExecutor.java:628                                    |
+|  | |                                                                                                                       |
+|  | +---java.lang.Thread.run() Thread.java:829                                                                              |
+|  |                                                                                                                         |
+|  +---webStructureAnalysis_pool-1-thread-254 Frozen for at least 10s <Ignore a false positive>                              |
+|  | |                                                                                                                       |
+|  | +---jdk.internal.misc.Unsafe.park(boolean, long) Unsafe.java (native)                                                   |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.LockSupport.park(Object) LockSupport.java:194                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() AbstractQueuedSynchronizer.java:2081  |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.LinkedBlockingQueue.take() LinkedBlockingQueue.java:433                                        |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.WorkflowProcessor.take() WorkflowProcessor.java:126                                      |
+|  | |                                                                                                                       |
+|  | +---net.yacy.kelondro.workflow.AbstractBlockingThread.run() AbstractBlockingThread.java:73                              |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.Executors$RunnableAdapter.call() Executors.java:515                                            |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.FutureTask.run() FutureTask.java:264                                                           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker) ThreadPoolExecutor.java:1128           |
+|  | |                                                                                                                       |
+|  | +---java.util.concurrent.ThreadPoolExecutor$Worker.run() ThreadPoolExecutor.java:628                                    |
+|  | |                                                                                                                       |
+|  | +---java.lang.Thread.run() Thread.java:829                                                                              |
+|  |                                                                                                                         |
+|  +---webStructureAnalysis_pool-1-thread-68 Frozen for at least 10s <Ignore a false positive>                               |
+|    |                                                                                                                       |
+|    +---jdk.internal.misc.Unsafe.park(boolean, long) Unsafe.java (native)                                                   |
+|    |                                                                                                                       |
+|    +---java.util.concurrent.locks.LockSupport.park(Object) LockSupport.java:194                                            |
+|    |                                                                                                                       |
+|    +---java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.await() AbstractQueuedSynchronizer.java:2081  |
+|    |                                                                                                                       |
+|    +---java.util.concurrent.LinkedBlockingQueue.take() LinkedBlockingQueue.java:433                                        |
+|    |                                                                                                                       |
+|    +---net.yacy.kelondro.workflow.WorkflowProcessor.take() WorkflowProcessor.java:126                                      |
+|    |                                                                                                                       |
+|    +---net.yacy.kelondro.workflow.AbstractBlockingThread.run() AbstractBlockingThread.java:73                              |
+|    |                                                                                                                       |
+|    +---java.util.concurrent.Executors$RunnableAdapter.call() Executors.java:515                                            |
+|    |                                                                                                                       |
+|    +---java.util.concurrent.FutureTask.run() FutureTask.java:264                                                           |
+|    |                                                                                                                       |
+|    +---java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor$Worker) ThreadPoolExecutor.java:1128           |
+|    |                                                                                                                       |
+|    +---java.util.concurrent.ThreadPoolExecutor$Worker.run() ThreadPoolExecutor.java:628                                    |
+|    |                                                                                                                       |
+|    +---java.lang.Thread.run() Thread.java:829                                                                              |
++----------------------------------------------------------------------------------------------------------------------------+
