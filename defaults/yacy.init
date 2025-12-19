@@ -11,9 +11,9 @@ network.external.address=
 network.external.port=
 network.external.sslport=
 
-network.connectivity.mode=direct   # direct | manual
-network.tunnel.acknowledge=false
-
+network.connectivity.mode = direct   # direct | manual | disabled
+network.tunnel.acknowledge = false
+network.topology = direct    # direct | nat | tunnel
 
 # ----------------------------------------------------------------------------
 # port number where the server should bind to
