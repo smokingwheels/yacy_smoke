@@ -5,10 +5,15 @@
 # They are used only once for set-up.
 # If you make changes to this file and want these to make any effect,
 # you must delete the yacy.conf file in DATA/SETTINGS
-# server.bindAddress = 127.0.0.1
-# network.unit.bindAddress = 127.0.0.1
-network.unit.public = false
-network.unit.upnp = false
+
+# --- Reverse tunnel / external reachability (ADVANCED) --- by smokingwheels
+network.external.address=
+network.external.port=
+network.external.sslport=
+
+network.connectivity.mode=direct   # direct | manual
+network.tunnel.acknowledge=false
+
 
 # ----------------------------------------------------------------------------
 # port number where the server should bind to

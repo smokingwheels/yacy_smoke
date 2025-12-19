@@ -373,6 +373,19 @@ public class Seed implements Cloneable, Comparable<Seed>, Comparator<Seed>
         if (ip6s != null && ip6s.size() > 0) return ip6s.iterator().next(); 
         return null;
     }
+    public void applyExternalAddressOverride(final Switchboard sb) {
+        if (!sb.getConfigBool("network.tunnel.acknowledge", false)) return;
+        if (!"manual".equals(sb.getConfig("network.connectivity.mode", "direct"))) return;
+
+        final String ext = sb.getConfig("network.external.address", "").trim();
+        if (ext.isEmpty()) return;
+
+        this.setIP(ext);
+
+        final int p = (int) sb.getConfigLong("network.external.port", this.getPort());
+        this.setPort(p);
+
+     }
 
     /**
      * Get all my public IPs. If there was a static IP assignment, only one, that IP is returned.
