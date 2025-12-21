@@ -66,6 +66,6 @@ if defined priolvl (
 )
 
 GoTo :STARTJAVA
-pause
+
 Rem Target needed to jump to the end of the file
 :END

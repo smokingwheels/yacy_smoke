@@ -7,13 +7,13 @@
 # you must delete the yacy.conf file in DATA/SETTINGS
 
 # --- Reverse tunnel / external reachability (ADVANCED) --- by smokingwheels
-network.external.address=
-network.external.port=
-network.external.sslport=
+#network.external.address = 
+#network.external.port = 
+#network.external.sslport = 
 
-network.connectivity.mode = direct   # direct | manual | disabled
-network.tunnel.acknowledge = false
-network.topology = direct    # direct | nat | tunnel
+#network.connectivity.mode = manual   # direct | manual | disabled
+#network.tunnel.acknowledge = false
+#network.topology = direct    # direct | nat | tunnel
 
 # ----------------------------------------------------------------------------
 # port number where the server should bind to
@@ -29,7 +29,7 @@ port.ssl = 8443
 port.shutdown = -1
 
 # use UPnP [true/false]
-upnp.enabled = true
+upnp.enabled = false
 # remote host on UPnP device (for more than one connection)
 upnp.remoteHost =
 
