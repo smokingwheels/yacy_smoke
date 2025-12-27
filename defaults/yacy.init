@@ -5,15 +5,10 @@
 # They are used only once for set-up.
 # If you make changes to this file and want these to make any effect,
 # you must delete the yacy.conf file in DATA/SETTINGS
-
-# --- Reverse tunnel / external reachability (ADVANCED) --- by smokingwheels
-#network.external.address = 
-#network.external.port = 
-#network.external.sslport = 
-
-#network.connectivity.mode = manual   # direct | manual | disabled
-#network.tunnel.acknowledge = false
-#network.topology = direct    # direct | nat | tunnel
+# server.bindAddress = 127.0.0.1
+# network.unit.bindAddress = 127.0.0.1
+network.unit.public = false
+network.unit.upnp = false
 
 # ----------------------------------------------------------------------------
 # port number where the server should bind to
@@ -29,7 +24,7 @@ port.ssl = 8443
 port.shutdown = -1
 
 # use UPnP [true/false]
-upnp.enabled = false
+upnp.enabled = true
 # remote host on UPnP device (for more than one connection)
 upnp.remoteHost =
 
@@ -782,7 +777,7 @@ cleanup.failedSearchURLtimeout = 86400000
 # not for first startup of YaCy
 
 # -Xmx<size> maximum/init Java heap size
-javastart_Xmx=Xmx1200m
+javastart_Xmx=Xmx1500m
 
 # YaCy is able to use RAM copies of database tables. This needs a lot of RAM.
 # To switch on copying of file tables int RAM, there must be enough memory

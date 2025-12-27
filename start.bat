@@ -11,7 +11,7 @@ Set CLASSPATH=lib\yacycore.jar
 REM Please change the "javastart" settings in the web-interface "Basic Configuration" -> "Advanced" 
 set jmx=
 set jms=
-set javacmd=-Xmx1200m
+set javacmd=-Xmx600m
 set priolvl=10
 set priority=/BELOWNORMAL
 if exist DATA\SETTINGS\httpProxy.conf GoTo :RENAMEINDEX
@@ -19,7 +19,7 @@ if exist DATA\SETTINGS\yacy.conf GoTo :GETSTARTOPTS
 
 :STARTJAVA
 set javacmd=%javacmd% -Djava.awt.headless=true -Dsolr.directoryFactory=solr.MMapDirectoryFactory -Dfile.encoding=UTF-8
-pause
+
 Rem Starting YaCy
 Echo Generated classpath:%CLASSPATH%
 Echo JRE Parameters:%javacmd%

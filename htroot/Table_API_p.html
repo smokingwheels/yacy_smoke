@@ -61,8 +61,14 @@ To see a list of all APIs, please visit the <a href="https://wiki.yacy.net/index
       <legend>Recorded Actions</legend>
       <br />
       <span id="resCounter" style="display: inline;">
+      
+      
+      
       #(navigation)#
       ::
+      
+            
+      
       #(left)#<img src="env/grafics/navdl.gif" alt="no previous page" />::<a href="Table_API_p.html?startRecord=#[startRecord]#&amp;maximumRecords=#[maximumRecords]#&amp;inline=#(inline)#false::true#(/inline)#&amp;filter=#[filter]#&amp;query=#[query]#&amp;sort=#[sort]#" target="_self"><img src="env/grafics/navsl.gif" alt="previous page" /></a>#(/left)#
       #[startRecord]#-#[to]# of #[of]#
       #(right)#<img src="env/grafics/navdr.gif" alt="no next page" />::<a href="Table_API_p.html?startRecord=#[startRecord]#&amp;maximumRecords=#[maximumRecords]#&amp;inline=#(inline)#false::true#(/inline)#&amp;filter=#[filter]#&amp;query=#[query]#&amp;sort=#[sort]#" target="_self"><img src="env/grafics/navsr.gif" alt="next page" /></a>#(/right)#
@@ -75,6 +81,8 @@ To see a list of all APIs, please visit the <a href="https://wiki.yacy.net/index
       <input type="hidden" name="filter" value="#[filter]#" />
       <input type="hidden" name="sort" value="#[sort]#" />
       <input type="text" name="query" value="#[query]#" onchange="resetStartRecord()" style="font-size:16px;float:left;border:0px;height:20px;background-image:url('env/grafics/find.gif');background-repeat:no-repeat;background-position:right top;"/>
+
+
 
 <!-- Action buttons moved above table -->
 <div class="row" style="margin-bottom:10px;">
@@ -119,6 +127,9 @@ To see a list of all APIs, please visit the <a href="https://wiki.yacy.net/index
   </div>
   #(/hasEditableNextExecDate)#
 </div>
+
+
+
 
       </span>
       <br/>
@@ -279,7 +290,13 @@ To see a list of all APIs, please visit the <a href="https://wiki.yacy.net/index
       <input type="hidden" name="scheduleeventaction" id="scheduleeventaction" value="false" />
       <input type="hidden" name="current_pk" id="current_pk" value="" />
       <input type="hidden" name="num" value="#[num]#" />
-
+      
+      
+      
+      
+      
+      
+      
       #(hasEditableNextExecDate)#::
       <div class="form-group col-sm-6">
  		<input type="submit" name="submitNextExecDates" class="btn btn-default" value="Apply edited next execution dates"/>
