@@ -467,12 +467,12 @@ public final class Switchboard extends serverSwitch {
         // init DNS throttle (global Hz limiter)
         DNSThrottle.configure(
         this.getConfigBool("dns.throttle.enabled", true),
-        (int) this.getConfigLong("dns.throttle.hz", 200)
+        (int) this.getConfigLong("dns.throttle.hz", 2000)
      );
 
      this.log.config(
     "DNS throttle enabled @ " +
-    this.getConfigLong("dns.throttle.hz", 200) + " Hz"
+    this.getConfigLong("dns.throttle.hz", 2000) + " Hz"
     );
 
  

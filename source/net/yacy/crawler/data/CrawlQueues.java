@@ -346,18 +346,19 @@ public void someMethod8() {
         }
     }
 
-    public Map<DigestURL, Request> activeWorkerEntries() {
-        synchronized (this.worker) {
-            Map<DigestURL, Request> map = new HashMap<>();
-            for (final Loader w: this.worker) {
-                if (w != null) {
-                    Request r = w.loading();
-                    if (r != null) map.put(r.url(), r);
-                }
+   public Map<DigestURL, Request> activeWorkerEntries() {
+    Map<DigestURL, Request> map = new HashMap<>();
+    for (final Loader w : this.worker) {
+        if (w != null) {
+            Request r = w.loading(); // volatile read
+            if (r != null) {
+                map.put(r.url(), r);
             }
-            return map;
         }
     }
+    return map;
+}
+
 
     public int coreCrawlJobSize() {
         return this.noticeURL.stackSize(NoticedURL.StackType.LOCAL) + this.noticeURL.stackSize(NoticedURL.StackType.NOLOAD);
@@ -461,45 +462,53 @@ public void someMethod8() {
 }
      
      
-    private void load(final Request urlEntry, final String stats) {
-        final CrawlProfile profile = this.sb.crawler.get(UTF8.getBytes(urlEntry.profileHandle()));
-        if (profile != null) {
+  private void load(final Request urlEntry, final String stats) {
 
-            // check if the protocol is supported
-            final DigestURL url = urlEntry.url();
-            final String urlProtocol = url.getProtocol();
-            if (this.sb.loader.isSupportedProtocol(urlProtocol)) {
-                if (CrawlQueues.log.isFine()) {
-                    CrawlQueues.log.fine(stats + ": URL=" + urlEntry.url()
-                            + ", initiator=" + ((urlEntry.initiator() == null) ? "" : ASCII.String(urlEntry.initiator()))
-                            + ", crawlOrder=" + ((profile.remoteIndexing()) ? "true" : "false")
-                            + ", depth=" + urlEntry.depth()
-                            + ", crawlDepth=" + profile.depth()
-                            + ", must-match=" + profile.formattedUrlMustMatchPattern()
-                            + ", must-not-match=" + profile.urlMustNotMatchPattern().toString()
-                            + ", permission=" + ((this.sb.peers == null) ? "undefined" : (((this.sb.peers.mySeed().isSenior()) || (this.sb.peers.mySeed().isPrincipal())) ? "true" : "false")));
-                }
+    final CrawlProfile profile =
+        this.sb.crawler.get(UTF8.getBytes(urlEntry.profileHandle()));
 
-                // work off one Crawl stack entry
-                if (urlEntry == null || urlEntry.url() == null) {
-                    CrawlQueues.log.info(stats + ": urlEntry = null");
-                } else {
-                    if (!this.activeWorkerEntries().containsKey(urlEntry.url())) {
-                        try {
-                            this.ensureLoaderRunning();
-                            this.workerQueue.put(urlEntry);
-                        } catch (InterruptedException e) {
-                            ConcurrentLog.logException(e);
-                        }
-                    }
-                }
-            } else {
-                CrawlQueues.log.severe("Unsupported protocol in URL '" + url.toNormalform(false));
+    if (profile == null) {
+        if (CrawlQueues.log.isFine()) {
+            CrawlQueues.log.fine(
+                stats + ": LOST PROFILE HANDLE '" +
+                urlEntry.profileHandle() +
+                "' for URL " + urlEntry.url()
+            );
+        }
+        return;
+    }
+
+    final DigestURL url = urlEntry.url();
+    final String urlProtocol = url.getProtocol();
+
+    if (!this.sb.loader.isSupportedProtocol(urlProtocol)) {
+        CrawlQueues.log.severe(
+            "Unsupported protocol in URL '" + url.toNormalform(false)
+        );
+        return;
+    }
+
+    boolean alreadyLoading = false;
+    for (final Loader w : this.worker) {
+        if (w != null) {
+            final Request r = w.loading();
+            if (r != null && r.url().equals(url)) {
+                alreadyLoading = true;
+                break;
             }
-        } else {
-            if (CrawlQueues.log.isFine()) CrawlQueues.log.fine(stats + ": LOST PROFILE HANDLE '" + urlEntry.profileHandle() + "' for URL " + urlEntry.url());
         }
     }
+
+    if (!alreadyLoading) {
+        try {
+            this.ensureLoaderRunning();
+            this.workerQueue.put(urlEntry);
+        } catch (InterruptedException e) {
+            ConcurrentLog.logException(e);
+        }
+    }
+}
+
 
     /**
      * if crawling was paused we have to wait until we were notified to continue

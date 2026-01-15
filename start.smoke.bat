@@ -24,19 +24,24 @@ if exist DATA\SETTINGS\yacy.conf GoTo :GETSTARTOPTS
 set javacmd=%javacmd% ^
  -Djava.awt.headless=true ^
  -Dfile.encoding=UTF-8 ^
- -Djava.io.tmpdir=R:\agent-smoke\tmp ^
  -Dsolr.directoryFactory=solr.NRTCachingDirectoryFactory ^
- -Dsolr.nrtCachingDirectoryFactory.maxMergeSizeMB=1024 ^
- -Dsolr.nrtCachingDirectoryFactory.maxCacheMB=8192 ^
+ -Dsolr.nrtCachingDirectoryFactory.maxMergeSizeMB=8192 ^
+ -Dsolr.nrtCachingDirectoryFactory.maxCacheMB=32768 ^
  -Dsun.zip.disableMemoryMapping=true ^
  -Dsun.nio.fs.disableFastCopy=true ^
- -Xms8g ^
- -Xmx64g ^
- -XX:MaxMetaspaceSize=1024m ^
+ -Xms32g ^
+ -Xmx48g ^
+ -XX:MaxMetaspaceSize=2048m ^
  -XX:+UseG1GC ^
- -XX:MaxGCPauseMillis=200 ^
- -XX:InitiatingHeapOccupancyPercent=30 ^
- -XX:+ParallelRefProcEnabled
+ -XX:MaxGCPauseMillis=250 ^
+ -XX:InitiatingHeapOccupancyPercent=35 ^
+ -XX:+ParallelRefProcEnabled ^
+ -XX:+AlwaysPreTouch ^
+ -XX:+DisableExplicitGC ^
+ -XX:ActiveProcessorCount=8 ^
+ -Djava.net.preferIPv4Stack=true ^
+ -Dsun.net.inetaddr.ttl=600 ^
+ -Dsun.net.inetaddr.negative.ttl=60 
 
 Rem Starting YaCy
 Echo Generated classpath:%CLASSPATH%
